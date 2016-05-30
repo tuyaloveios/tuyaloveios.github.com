@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>BANetworking</title>
+  <subtitle>快速, 简单 &amp; powerful blog framework powered by Node.js.</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://beyondabel.com/"/>
+  <updated>2016-05-28T15:56:28.000Z</updated>
+  <id>https://beyondabel.com/</id>
+  
+  <author>
+    <name>Beyound Abel</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>BANetworking 1.0.0 Released</title>
+    <link href="https://beyondabel.com/news/2016/02/28/hexo-3-2-released/"/>
+    <id>https://beyondabel.com/news/2016/02/28/hexo-3-2-released/</id>
+    <published>2016-02-28T00:00:00.000Z</published>
+    <updated>2016-05-28T15:56:28.000Z</updated>
+    
+    <content type="html">&lt;p&gt;经过大家的使用和反馈，更新至1.0.0版本，目前足够成熟。&lt;/p&gt;
+&lt;p&gt;这里要感谢大家的支持！&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;经过大家的使用和反馈，更新至1.0.0版本，目前足够成熟。&lt;/p&gt;
+&lt;p&gt;这里要感谢大家的支持！&lt;/p&gt;
+
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>

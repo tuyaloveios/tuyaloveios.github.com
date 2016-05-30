@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>BAModel的使用 | BANetworking</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://beyondabel.com/docs/themes.html">
+  <!-- Alternative links -->
+  
+    
+      <link rel="alternative" hreflang="en" href="https://beyondabel.com/docs/themes.html">
+    
+      <link rel="alternative" hreflang="zh-cn" href="https://beyondabel.com/zh-cn/docs/themes.html">
+    
+  
+  <!-- Icon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-touch-icon-152x152.png">
+  <link rel="icon" type="image/png" href="/icon/favicon-196x196.png" sizes="196x196">
+  <link rel="icon" type="image/png" href="/icon/favicon-160x160.png" sizes="160x160">
+  <link rel="icon" type="image/png" href="/icon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/icon/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/icon/favicon-32x32.png" sizes="32x32">
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/mstile-144x144.png">
+  <!-- CSS -->
+  <!-- build:css build/css/navy.css -->
+  <link rel="stylesheet" href="/css/navy.css">
+  <!-- endbuild -->
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css">
+  <!-- RSS -->
+  <link rel="alternate" href="/atom.xml" title="BANetworking">
+  <!-- Open Graph -->
+  <meta name="description" content="我们知道数据在网络传递的过程中是以数据流的方式传递，而我们在app中真正拿到的数据是NSData，所以有时候我们需要把这些数据解析成NSArray或者NSDictionary甚至我们需要的Model对象。我们之前说过通过设置服务器的Content-Type就可以把我们从Responese拿到的数据是NSArray或者NSDictionary，那底层又是怎么做的呢？以及我们怎么样把一个NSDicti">
+<meta property="og:type" content="website">
+<meta property="og:title" content="BAModel的使用">
+<meta property="og:url" content="https://beyondabel.com/docs/themes.html">
+<meta property="og:site_name" content="BANetworking">
+<meta property="og:description" content="我们知道数据在网络传递的过程中是以数据流的方式传递，而我们在app中真正拿到的数据是NSData，所以有时候我们需要把这些数据解析成NSArray或者NSDictionary甚至我们需要的Model对象。我们之前说过通过设置服务器的Content-Type就可以把我们从Responese拿到的数据是NSArray或者NSDictionary，那底层又是怎么做的呢？以及我们怎么样把一个NSDicti">
+<meta property="og:updated_time" content="2016-05-30T11:19:40.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="BAModel的使用">
+<meta name="twitter:description" content="我们知道数据在网络传递的过程中是以数据流的方式传递，而我们在app中真正拿到的数据是NSData，所以有时候我们需要把这些数据解析成NSArray或者NSDictionary甚至我们需要的Model对象。我们之前说过通过设置服务器的Content-Type就可以把我们从Responese拿到的数据是NSArray或者NSDictionary，那底层又是怎么做的呢？以及我们怎么样把一个NSDicti">
+<meta name="twitter:site" content="beyondabel">
+<meta property="fb:admins" content="100000247608790">
+  <!-- Google Analytics -->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-4910098-10', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</head>
+
+<body>
+  <div id="container">
+    
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+    <h1 id="logo-wrap">
+      <a href="/" id="logo">BANet</a>
+    </h1>
+    <nav id="main-nav">
+      <a href="/" class="main-nav-link">首页</a><a href="/docs/" class="main-nav-link">文档</a><a href="/news/" class="main-nav-link">动态</a><a href="https://github.com/beyondabel/BANetworking" class="main-nav-link">menu.github</a>
+    </nav>
+    <div id="lang-select-wrap">
+      <label id="lang-select-label"><i class="fa fa-globe"></i><span>简体中文</span></label>
+      <select id="lang-select" data-canonical="docs/themes.html">
+        
+          <option value="en" selected>简体中文</option>
+        
+          <option value="zh-cn">简体中文</option>
+        
+      </select>
+    </div>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+
+<div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name">BAModel的使用</h1>
+                <a href="https://github.com/hexojs/site/edit/master/source/docs/themes.md" class="article-edit-link" title="改进本文"><i class="fa fa-pencil"></i></a>
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <p>我们知道数据在网络传递的过程中是以数据流的方式传递，而我们在app中真正拿到的数据是NSData，所以有时候我们需要把这些数据解析成NSArray或者NSDictionary甚至我们需要的Model对象。我们之前说过通过设置服务器的Content-Type就可以把我们从Responese拿到的数据是NSArray或者NSDictionary，那底层又是怎么做的呢？以及我们怎么样把一个NSDictionary转成一个我们需要的model对象呢？</p>
+<p>我们来看看在Response目录下的BAResponseSerializer类，具体代码如下：</p>
+<p>从代码中我们可以看出，其实在BAResponseSerializer类中对返回的数据包头进行分析了，如果它的Content-Type类型为application/json时，我们会调用系统的JSON解析类（注意Content-Type的大小写），相应的你可以根据相应的需求修改相应的条件。</p>
+<figure class="highlight objc"><table><tr><td class="code"><pre><span class="line">- (<span class="keyword">id</span>)responseObjectForURLResponse:(<span class="built_in">NSURLResponse</span> *)response data:(<span class="built_in">NSData</span> *)data &#123;</span><br><span class="line">    <span class="keyword">if</span> (data == <span class="literal">nil</span> || ![response isKindOfClass:[<span class="built_in">NSHTTPURLResponse</span> class]]) <span class="keyword">return</span> <span class="literal">nil</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">id</span> object = <span class="literal">nil</span>;</span><br><span class="line">    <span class="built_in">NSHTTPURLResponse</span> *HTTPResponse = (<span class="built_in">NSHTTPURLResponse</span> *)response;</span><br><span class="line">    <span class="keyword">if</span> ([HTTPResponse.allHeaderFields[<span class="string">@"Content-Type"</span>] ba_containsString:<span class="string">@"application/json"</span>]) &#123;</span><br><span class="line">        <span class="built_in">NSError</span> *error = <span class="literal">nil</span>;</span><br><span class="line">        object = [<span class="built_in">NSJSONSerialization</span> JSONObjectWithData:data options:<span class="number">0</span> error:&amp;error];</span><br><span class="line">        <span class="keyword">if</span> (error) &#123;</span><br><span class="line">            object = data;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        object = data;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> object;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>现在我们知道为什么必须要服务器返回的Content-Type设置为application/json了，那如果我们需要把NSDictionary转成Model呢？</p>
+<h2 id="简单Json转化" class="article-heading"><a href="#简单Json转化" class="headerlink" title="简单Json转化"></a>简单Json转化<a class="article-anchor" href="#简单Json转化" aria-hidden="true"></a></h2><p>举个例子，假如服务器返回的数据如下，我们需要转成一个model对象应该怎么做呢？</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="attr">"user_id"</span> : <span class="number">1001</span>,</span><br><span class="line">	<span class="attr">"user_name"</span> : <span class="string">"BeyondAbel"</span>,</span><br><span class="line">	<span class="attr">"sex"</span> : <span class="string">"男"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>首先它需要继承BAModel类，然后实现+ (NSDictionary *)dictionaryKeyPathsForPropertyNames方法。我们来看一个真实代码：</p>
+<p>创建一个BAUserModel类代码如下</p>
+<figure class="highlight objc"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">BAUserModel</span> : <span class="title">BAModel</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">assign</span>, <span class="keyword">readonly</span>) <span class="built_in">NSInteger</span> userID;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>, <span class="keyword">readonly</span>) <span class="built_in">NSString</span> *userName;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>, <span class="keyword">readonly</span>) <span class="built_in">NSString</span> *sex;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">BAUserModel</span></span></span><br><span class="line"></span><br><span class="line">+ (<span class="built_in">NSDictionary</span> *)dictionaryKeyPathsForPropertyNames &#123;</span><br><span class="line">	retur @&#123;</span><br><span class="line">				<span class="string">@"userID"</span> : <span class="string">@"user_id"</span>,</span><br><span class="line">				<span class="string">@"userName"</span> : <span class="string">@"user_name"</span>,</span><br><span class="line">				<span class="string">@"sex"</span> : <span class="string">@"sex"</span>,</span><br><span class="line">			&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<p>从上面的代码可以看出，我们要实现的代码非常少，就可以把一个NSDictionary转成一个Model对象了，其中dictionaryKeyPathsForPropertyNames中，所有的key值为BAUserModel类的属性名称，value值为服务器返回的json串的key值。这个时候我们只需要把创建一个BAUserModel实例初始化数据就可以了</p>
+<figure class="highlight objc"><table><tr><td class="code"><pre><span class="line">BAUserModel *userModel = [[BAUserModel alloc] initWithDictionary:result.body];</span><br></pre></td></tr></table></figure>
+<h2 id="数组Model转化" class="article-heading"><a href="#数组Model转化" class="headerlink" title="数组Model转化"></a>数组Model转化<a class="article-anchor" href="#数组Model转化" aria-hidden="true"></a></h2><p>到现在为止我们都知道了基本的NSDictionary转Model的方式了，那么服务器给我们的是一组数据呢？比如下面的数据呢？</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">[</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">"user_id"</span> : <span class="number">1001</span>,</span><br><span class="line">        <span class="attr">"user_name"</span> : <span class="string">"BeyondAbel"</span>,</span><br><span class="line">        <span class="attr">"sex"</span> : <span class="string">"男"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">"user_id"</span> : <span class="number">1002</span>,</span><br><span class="line">        <span class="attr">"user_name"</span> : <span class="string">"may"</span>,</span><br><span class="line">        <span class="attr">"sex"</span> : <span class="string">"女"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">"user_id"</span> : <span class="number">1003</span>,</span><br><span class="line">        <span class="attr">"user_name"</span> : <span class="string">"tammy"</span>,</span><br><span class="line">        <span class="attr">"sex"</span> : <span class="string">"女"</span></span><br><span class="line">    &#125;,</span><br><span class="line"> ]</span><br></pre></td></tr></table></figure>
+<p>其实也是非常简单，我们可以去定义一个数组来保存解析出来的BAUserModel实例，然后遍历服务器返回的数组并解析数组中的字典成对象，最后一个一个添加接收数组。具体如下：</p>
+<figure class="highlight objc"><table><tr><td class="code"><pre><span class="line"><span class="built_in">NSMutableArray</span> *userModels = [[<span class="built_in">NSMutableArray</span> alloc] initWithCapacity:<span class="number">0</span>];</span><br><span class="line"><span class="keyword">for</span> (<span class="built_in">NSDictionary</span> *userDictionary <span class="keyword">in</span> result.body) &#123;</span><br><span class="line">    BAUserModel *userModel = [[BAUserModel alloc] initWithDictionary:userDictionary];</span><br><span class="line">   [userModels addObject:userModel];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当然上面的方法是大家都能想得到的一个方法，下面我介绍一个技巧性的方法，首先你需要导入NSArray+BAAdditions.h头文件。</p>
+<figure class="highlight objc"><table><tr><td class="code"><pre><span class="line"><span class="built_in">NSArray</span> *userModels = [result.body ba_mappedArrayWithBlock:^<span class="keyword">id</span>(<span class="keyword">id</span> obj) &#123;</span><br><span class="line">   <span class="keyword">return</span> [[BAUserModel alloc] initWithDictionary:obj];</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
+<p>上面的二种方式都可以实现相应的要求，个人推荐第二种方法。</p>
+<h2 id="嵌套Model转化" class="article-heading"><a href="#嵌套Model转化" class="headerlink" title="嵌套Model转化"></a>嵌套Model转化<a class="article-anchor" href="#嵌套Model转化" aria-hidden="true"></a></h2><p>上面讲解了简单的数据转成Model的使用方法，但如果我们遇到实例中的属性也是一个对象呢？那又该怎么办呢？</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"user_id"</span> : <span class="number">1001</span>,</span><br><span class="line">  <span class="attr">"user_name"</span> : <span class="string">"BeyondAbel"</span>,</span><br><span class="line">  <span class="attr">"sex"</span> : <span class="string">"男"</span>,</span><br><span class="line">  <span class="attr">"app"</span> :</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">"app_id"</span> : <span class="number">3</span>,</span><br><span class="line">      <span class="attr">"app_name"</span> : <span class="string">"金蛋理财"</span>,</span><br><span class="line">      <span class="attr">"link"</span> : <span class="string">"https://www.jindanlicai.com"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>首先我们按照之前的方式创建二个对象BAUserModel和BAAppModel</p>
+<figure class="highlight objc"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">BAUserModel</span> : <span class="title">BAModel</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">assign</span>, <span class="keyword">readonly</span>) <span class="built_in">NSInteger</span> userID;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>, <span class="keyword">readonly</span>) <span class="built_in">NSString</span> *userName;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>, <span class="keyword">readonly</span>) <span class="built_in">NSString</span> *sex;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>, <span class="keyword">readonly</span>) BAAppModel *appModel;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line">+ (<span class="built_in">NSDictionary</span> *)dictionaryKeyPathsForPropertyNames &#123;</span><br><span class="line">    <span class="keyword">return</span> @&#123;</span><br><span class="line">             <span class="string">@"userID"</span> : <span class="string">@"user_id"</span>,</span><br><span class="line">             <span class="string">@"userName"</span> : <span class="string">@"user_name"</span>,</span><br><span class="line">             <span class="string">@"sex"</span> : <span class="string">@"sex"</span>,</span><br><span class="line">             <span class="string">@"appModel"</span> : <span class="string">@"app"</span>,</span><br><span class="line">             &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">BAAppModel</span> : <span class="title">BAModel</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">assign</span>, <span class="keyword">readonly</span>) <span class="built_in">NSInteger</span> appID;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>, <span class="keyword">readonly</span>) <span class="built_in">NSString</span> *appName;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>, <span class="keyword">readonly</span>) <span class="built_in">NSString</span> *link;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">BAAppModel</span></span></span><br><span class="line"></span><br><span class="line">+ (<span class="built_in">NSDictionary</span> *)dictionaryKeyPathsForPropertyNames &#123;</span><br><span class="line">    <span class="keyword">return</span> @&#123;</span><br><span class="line">             <span class="string">@"appID"</span> : <span class="string">@"app_id"</span>,</span><br><span class="line">             <span class="string">@"appName"</span> : <span class="string">@"app_name"</span>,</span><br><span class="line">             <span class="string">@"link"</span> : <span class="string">@"link"</span>,</span><br><span class="line">             &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<p>然后我们对返回的数据进行解析</p>
+<figure class="highlight objc"><table><tr><td class="code"><pre><span class="line">BAUserModel *userModel = [[BAUserModel alloc] initWithDictionary:result];</span><br></pre></td></tr></table></figure>
+<p>我们对userModel断点时发现，userModel中的appModel的数据类型竟然是NSDictionay类型，而不是我们想的BAAppModel对象。</p>
+<p>这是怎么回事呢？原来我们并没有对appMoel那部分数据做转换，而是直接把NSDictionay给appModel保存了，那如果我们要对其数据转换成BAAppModel又应该怎么做呢？</p>
+<p>我们只需要在BAUserModel导入NSValueTransformer+BATransformers.h文件，并且在BAUserModel类中实现转换方法appModelValueTransformer:。如下所示</p>
+<figure class="highlight objc"><table><tr><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">"NSValueTransformer+BATransformers.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">BAUserModel</span></span></span><br><span class="line"></span><br><span class="line">+ (<span class="built_in">NSDictionary</span> *)dictionaryKeyPathsForPropertyNames &#123;</span><br><span class="line">    <span class="keyword">return</span> @&#123;</span><br><span class="line">             <span class="string">@"userID"</span> : <span class="string">@"user_id"</span>,</span><br><span class="line">             <span class="string">@"userName"</span> : <span class="string">@"user_name"</span>,</span><br><span class="line">             <span class="string">@"sex"</span> : <span class="string">@"sex"</span>,</span><br><span class="line">             <span class="string">@"appModel"</span> : <span class="string">@"app"</span>,</span><br><span class="line">             &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">+ (<span class="built_in">NSValueTransformer</span> *)appModelValueTransformer &#123;</span><br><span class="line">    <span class="keyword">return</span> [<span class="built_in">NSValueTransformer</span> ba_transformerWithModelClass:[BAAppModel class]];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个时候我们再来看一下appModel的数据类型，发现这个时候是BAAppModel数据类型了。</p>
+<p>为什么这样写就可以了呢？如果之后遇到相同的问题又应该怎么办呢？其实只要涉及到类型转换，其中appModelValueTransformer中的appModel是需要转换的属性名称，ba_transformerWithModelClass：后面的Class是用这个类来转换。</p>
+
+              </div>
+              <footer class="article-footer">
+                <time class="article-footer-updated" datetime="2016-05-30T11:19:40.000Z" itemprop="dateModified">上次更新：2016-05-30</time>
+                <a href="permalinks.html" class="article-footer-prev" title="概述"><i class="fa fa-chevron-left"></i><span>上一页</span></a><a href="troubleshooting.html" class="article-footer-next" title="问题解答"><span>下一页</span><i class="fa fa-chevron-right"></i></a>
+              </footer>
+              
+            </div>
+          </div>
+          <aside id="article-toc" role="navigation">
+            <div id="article-toc-inner">
+              <strong class="sidebar-title">目录</strong>
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#简单Json转化"><span class="toc-text">简单Json转化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数组Model转化"><span class="toc-text">数组Model转化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#嵌套Model转化"><span class="toc-text">嵌套Model转化</span></a></li></ol>
+              <a href="#" id="article-toc-top">回到顶部</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+  <div class="inner"><strong class="sidebar-title">开始使用</strong><a href="index.html" class="sidebar-link">概述</a><a href="configuration.html" class="sidebar-link">配置</a><strong class="sidebar-title">网络部分</strong><a href="login.html" class="sidebar-link">注册、登录</a><a href="writing.html" class="sidebar-link">创建请求</a><a href="front-matter.html" class="sidebar-link">图片上传</a><strong class="sidebar-title">数据解析</strong><a href="permalinks.html" class="sidebar-link">概述</a><a href="themes.html" class="sidebar-link current">使用</a><strong class="sidebar-title">其他</strong><a href="troubleshooting.html" class="sidebar-link">问题解答</a><a href="using.html" class="sidebar-link">正在使用</a><a href="contributing.html" class="sidebar-link">贡献</a></div>
+</aside>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      &copy; 2016 <a href="https://zespia.tw/" target="_blank">Beyound Abel</a><br>
+      Documentation licensed under <a href="http://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a>.
+    </div>
+    <div id="footer-links">
+      <a href="https://twitter.com/beyondabel" class="footer-link" target="_blank"><i class="fa fa-twitter"></i></a>
+      <a href="https://github.com/beyondabel/BANetworking" class="footer-link" target="_blank"><i class="fa fa-github-alt"></i></a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <a href="/" class="mobile-nav-link">首页</a><a href="/docs/" class="mobile-nav-link">文档</a><a href="/news/" class="mobile-nav-link">动态</a><a href="https://github.com/beyondabel/BANetworking" class="mobile-nav-link">menu.github</a>
+      <li class="mobile-nav-item">
+        <a href="https://github.com/beyondabel/BANetworking" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+      <strong class="mobile-nav-title">开始使用</strong><a href="index.html" class="mobile-nav-link">概述</a><a href="configuration.html" class="mobile-nav-link">配置</a><strong class="mobile-nav-title">网络部分</strong><a href="login.html" class="mobile-nav-link">注册、登录</a><a href="writing.html" class="mobile-nav-link">创建请求</a><a href="front-matter.html" class="mobile-nav-link">图片上传</a><strong class="mobile-nav-title">数据解析</strong><a href="permalinks.html" class="mobile-nav-link">概述</a><a href="themes.html" class="mobile-nav-link current">使用</a><strong class="mobile-nav-title">其他</strong><a href="troubleshooting.html" class="mobile-nav-link">问题解答</a><a href="using.html" class="mobile-nav-link">正在使用</a><a href="contributing.html" class="mobile-nav-link">贡献</a>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label"><i class="fa fa-globe"></i><span>简体中文</span></span>
+    <select id="mobile-lang-select" data-canonical="docs/themes.html">
+      
+        <option value="en" selected>简体中文</option>
+      
+        <option value="zh-cn">简体中文</option>
+      
+    </select>
+  </div>
+</nav>
+  <!-- Scripts -->
+<!-- build:js build/js/main.js -->
+<script src="/js/lang_select.js"></script>
+<script src="/js/toc.js"></script>
+<script src="/js/mobile_nav.js"></script>
+<!-- endbuild -->
+<script src="https://cdn.jsdelivr.net/retinajs/1.3.0/retina.min.js" async></script>
+
+<!-- Algolia -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
+<script type="text/javascript">
+document.getElementById('search-input-wrap').classList.add('on');
+docsearch({
+  apiKey: 'c3d5d4c995b5e0c2ffb5623900279a66',
+  indexName: 'hexo',
+  inputSelector: '#search-input'
+});
+</script>
+
+
+</body>
+</html>
