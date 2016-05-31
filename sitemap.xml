@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://beyondabel.com/docs/using.html</loc>
+    
+    <lastmod>2016-05-30T14:59:09.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://beyondabel.com/zh-cn/docs/contributing.html</loc>
+    
+    <lastmod>2016-05-30T14:50:47.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://beyondabel.com/docs/contributing.html</loc>
+    
+    <lastmod>2016-05-30T14:50:16.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://beyondabel.com/docs/themes.html</loc>
     
     <lastmod>2016-05-30T11:19:40.000Z</lastmod>
@@ -37,14 +58,14 @@
   </url>
   
   <url>
-    <loc>https://beyondabel.com/docs/login.html</loc>
+    <loc>https://beyondabel.com/zh-cn/docs/login.html</loc>
     
     <lastmod>2016-05-30T09:54:36.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://beyondabel.com/zh-cn/docs/login.html</loc>
+    <loc>https://beyondabel.com/docs/login.html</loc>
     
     <lastmod>2016-05-30T09:54:36.000Z</lastmod>
     
@@ -72,13 +93,6 @@
   </url>
   
   <url>
-    <loc>https://beyondabel.com/docs/using.html</loc>
-    
-    <lastmod>2016-05-30T04:45:12.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://beyondabel.com/index.html</loc>
     
     <lastmod>2016-05-28T16:33:38.000Z</lastmod>
@@ -89,20 +103,6 @@
     <loc>https://beyondabel.com/news/2016/02/28/hexo-3-2-released/</loc>
     
     <lastmod>2016-05-28T15:56:28.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://beyondabel.com/docs/contributing.html</loc>
-    
-    <lastmod>2016-05-28T15:33:45.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://beyondabel.com/zh-cn/docs/contributing.html</loc>
-    
-    <lastmod>2016-05-28T15:33:45.000Z</lastmod>
     
   </url>
   
